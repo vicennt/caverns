@@ -52,5 +52,26 @@ public class DataWorker {
 		}
 		return coordenateMatrix;
 	}
-
+	
+	public double[][] obtainMatrixEdgesWeight(int[][] incidenceMatrix, int[][] coordenateMatrix, int numCaverns){
+		double[][] edgesWeightMatrix = new double[numCaverns][numCaverns];	
+		for(int i = 0; i < numCaverns; i++) {
+			for(int j = 0; j < numCaverns; j++) {
+				if(incidenceMatrix[i][j] == 1) { // Edge between node i and node j
+					int x1 = coordenateMatrix[i][0];
+					int x2 = coordenateMatrix[j][0];
+					int y1 = coordenateMatrix[i][1];
+					int y2 = coordenateMatrix[j][1];
+					double weighEdge = Math.sqrt(Math.pow((x2 - x1),2) + Math.pow((y2 - y1),2));
+					edgesWeightMatrix[i][j] = round(weighEdge, 2);
+				}
+			}
+		}
+		return edgesWeightMatrix;	
+	}
+	
+	private static double round (double value, int precision) {
+	    int scale = (int) Math.pow(10, precision);
+	    return (double) Math.round(value * scale) / scale;
+	}
 }

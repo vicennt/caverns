@@ -29,6 +29,15 @@ public class MainClass {
 				System.out.print("["+ coordenateMatrix[x][y] +"]");
 			}
 			System.out.println("\n");
+		}	
+		System.out.println("- Weight Edges Matrix: ");
+		System.out.println(" " );
+		double[][] edgesWeightMatrix = fw.obtainMatrixEdgesWeight(incidenceMatrix, coordenateMatrix, numCaverns);
+		for(int x = 0; x < edgesWeightMatrix.length; x++) {
+			for(int y = 0; y < edgesWeightMatrix.length; y++) {
+				System.out.print("["+ edgesWeightMatrix[x][y] +"]");
+			}
+			System.out.println("\n");
 		}
 	}
 }
