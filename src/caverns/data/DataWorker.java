@@ -28,5 +28,17 @@ public class DataWorker {
 	public int numberOfCaverns(String[] data) {
 		return Integer.parseInt(data[0]);
 	}
+	
+	public int[][] obtainIncidenceMatrix(String[] data, int numCaverns) {
+		int[][] incidenceMatrix = new int[numCaverns][numCaverns];	
+		int startPosition = (numCaverns * 2) + 1;
+		for(int i = 0; i < numCaverns; i++) {
+			for (int j = 0; j < numCaverns; j++) {
+				incidenceMatrix[i][j] = Integer.parseInt(data[startPosition]);
+				startPosition++;
+			}
+		}	
+		return incidenceMatrix;
+	}
 
 }
