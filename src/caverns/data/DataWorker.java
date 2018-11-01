@@ -40,5 +40,17 @@ public class DataWorker {
 		}	
 		return incidenceMatrix;
 	}
+	
+	public int[][] obtainCoordenateMatrix(String[] data, int numCaverns) {
+		int[][] coordenateMatrix = new int[numCaverns][2];	
+		int startPosition = 1;
+		for(int i = 0; i < numCaverns; i++) {
+			for (int j = 0; j < 2; j++) {
+				coordenateMatrix[i][j] = Integer.parseInt(data[startPosition]);
+				startPosition++;
+			}
+		}
+		return coordenateMatrix;
+	}
 
 }

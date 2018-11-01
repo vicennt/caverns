@@ -20,6 +20,15 @@ public class MainClass {
 				System.out.print("["+ incidenceMatrix[x][y] +"]");
 			}
 			System.out.println("\n");
-		}	
+		}
+		System.out.println("- Coordenates Matrix: ");
+		System.out.println(" " );
+		int[][] coordenateMatrix = fw.obtainCoordenateMatrix(data, numCaverns);
+		for(int x = 0; x < coordenateMatrix.length; x++) {
+			for(int y = 0; y < 2; y++) {
+				System.out.print("["+ coordenateMatrix[x][y] +"]");
+			}
+			System.out.println("\n");
+		}
 	}
 }
