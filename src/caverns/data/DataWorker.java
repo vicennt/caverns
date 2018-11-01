@@ -24,5 +24,9 @@ public class DataWorker {
             return null;
         }
 	}
+	
+	public int numberOfCaverns(String[] data) {
+		return Integer.parseInt(data[0]);
+	}
 
 }
