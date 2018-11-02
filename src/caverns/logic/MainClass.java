@@ -8,7 +8,7 @@ public class MainClass {
 		System.out.println("# Map information");	
 		DataWorker fw = new DataWorker();
 		//String fileNamePath = args[1];
-		String fileNamePath = "./data/small_example.cav";
+		String fileNamePath = "./data/pdf_example.cav";
 		String[] data = fw.readFile(fileNamePath);
 		int numCaverns = fw.numberOfCaverns(data);
 		System.out.println("- Number of caverns: " + numCaverns );
@@ -38,6 +38,13 @@ public class MainClass {
 				System.out.print("["+ edgesWeightMatrix[x][y] +"]");
 			}
 			System.out.println("\n");
+		}
+		
+		System.out.println("- Heuristic Manhattan vector: ");
+		System.out.println(" " );
+		int[] manhattanDistances = fw.obtainManhattanDistance(coordenateMatrix, numCaverns);
+		for(int i = 0; i < manhattanDistances.length; i++ ) {
+			System.out.print("["+ manhattanDistances[i] +"]");
 		}
 	}
 }

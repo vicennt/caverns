@@ -71,7 +71,19 @@ public class DataWorker {
 	}
 	
 	private static double round (double value, int precision) {
-	    int scale = (int) Math.pow(10, precision);
+	    int scale = (int) Math.pow(10, precision); 
 	    return (double) Math.round(value * scale) / scale;
+	}
+	
+	public int[] obtainManhattanDistance(int[][] coordenateMatrix, int numCaverns) {
+		int[] manhattanDistance = new int[numCaverns];
+		int coordenateXobjective = coordenateMatrix[numCaverns - 1][0];
+		int coordenateYobjective = coordenateMatrix[numCaverns - 1][1];
+		for(int i = 0; i < numCaverns; i++) {
+				int auxManhattan = Math.abs((coordenateMatrix[i][0] - coordenateXobjective)) + 
+						Math.abs((coordenateMatrix[i][1] - coordenateYobjective));
+				manhattanDistance[i] = auxManhattan;
+		}
+		return manhattanDistance;
 	}
 }
