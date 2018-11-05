@@ -32,4 +32,14 @@ public class CaveNode {
 		nextCaves.add(c);
 	}
 	
+	public int manhattanDistanceObjective(CaveNode nodeObjective) {		
+		return Math.abs((this.coordenateX - nodeObjective.coordenateX)) + 
+				Math.abs((this.coordenateY - nodeObjective.coordenateY));
+	}
+	
+	public double euclideanDistance(CaveNode n) {
+		return Math.sqrt(Math.pow((n.coordenateX - this.coordenateX),2) + 
+				Math.pow((n.coordenateY - this.coordenateY),2));
+	}
+	
 }
