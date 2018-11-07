@@ -4,11 +4,6 @@ public class ProgramFunctions {
 	
 	private int numCaverns;
 	private String[] data;
-	
-	private int[][] coordenateMatrix;
-	private int[][] incidenceMatrix;
-	private double[][] euclideanMatrix;
- 	private int[] manhattanDistances;
 
 
  	public ProgramFunctions(int numCaverns, String[] data) {
@@ -43,8 +38,8 @@ public class ProgramFunctions {
 		return coordenateMatrix;
 	}
 	
-	public double[][] getEuclideanMatrix(){
-		euclideanMatrix = new double[numCaverns][numCaverns];	
+	public double[][] getEuclideanMatrix(int[][] incidenceMatrix, int[][] coordenateMatrix){
+		double[][] euclideanMatrix = new double[numCaverns][numCaverns];	
 		for(int i = 0; i < numCaverns; i++) {
 			for(int j = 0; j < numCaverns; j++) {
 				if(incidenceMatrix[i][j] == 1) { // Edge between node i and node j
@@ -61,8 +56,8 @@ public class ProgramFunctions {
 	}
 
 	
-	public int[] getManhattanDistances() {
-		manhattanDistances = new int[numCaverns];
+	public int[] getManhattanDistances(int[][] coordenateMatrix) {
+		int[] manhattanDistances = new int[numCaverns];
 		int coordenateXobjective = coordenateMatrix[numCaverns - 1][0];
 		int coordenateYobjective = coordenateMatrix[numCaverns - 1][1];
 		for(int i = 0; i < numCaverns; i++) {
