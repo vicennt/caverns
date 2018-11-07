@@ -32,6 +32,10 @@ public class CaveNode {
 		nextCaves.add(c);
 	}
 	
+	public ArrayList<CaveNode> getNeighbours(){
+		return nextCaves;
+	}
+	
 	public int manhattanDistanceObjective(CaveNode nodeObjective) {		
 		return Math.abs((this.coordenateX - nodeObjective.coordenateX)) + 
 				Math.abs((this.coordenateY - nodeObjective.coordenateY));
