@@ -6,7 +6,7 @@ import caverns.data.DataWorker;
 
 public class MainClass {
 	public static void main(String[] args) {
-		String fileNamePath = "./data/generated100-1.cav";
+		String fileNamePath = "./data/small_example.cav";
 		DataWorker fw = new DataWorker();
 		ProgramFunctions pf;
 		ArrayList<CaveNode> caves;
@@ -22,13 +22,13 @@ public class MainClass {
 		pf = new ProgramFunctions(numCaverns, data);
 		caves = pf.getCaves();
 		incidenceMatrix = pf.getIncidenceMatrix();
-		coordenateMatrix = pf.getCoordenateMatrix();
+		coordenateMatrix = pf.getCoordenateMatrix();	
 		euclideanMatrix = pf.getEuclideanMatrix(incidenceMatrix, coordenateMatrix);
 		System.out.println("Creating the graph.....");
 		for (int j = 0; j < incidenceMatrix.length; j++) 
 			for (int k = 0; k < incidenceMatrix.length; k++) 
 				if (incidenceMatrix[j][k] == 1) 
-					caves.get(k).addCave(caves.get(j));								
+					caves.get(k).addCave(caves.get(j)); // opposite index							
 		System.out.println("Calling A* method.....");	
 		ArrayList<CaveNode> result =  pf.aStar(caves.get(0), caves.get(caves.size() - 1));
 		System.out.print("[RESULT] The best path is: ");

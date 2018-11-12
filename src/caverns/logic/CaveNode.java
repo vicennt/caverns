@@ -2,11 +2,12 @@ package caverns.logic;
 
 import java.util.ArrayList;
 
-public class CaveNode {
+public class CaveNode implements Comparable<CaveNode>{
 	
 	private int numCave;
 	private int coordenateX;
 	private int coordenateY;
+	private double fScore;
 	private ArrayList<CaveNode> nextCaves;
 	
 	public CaveNode(int coordenateX, int coordenateY, int numCave) {
@@ -34,6 +35,14 @@ public class CaveNode {
 	public void setCoordenateY(int coordenateY) {
 		this.coordenateY = coordenateY;
 	}
+	
+	public double getfScore() {
+		return fScore;
+	}
+
+	public void setfScore(double fScore) {
+		this.fScore = fScore;
+	}
 
 	public void addCave(CaveNode c) {
 		nextCaves.add(c);
@@ -43,7 +52,7 @@ public class CaveNode {
 		return nextCaves;
 	}
 	
-	public int manhattanDistanceObjective(CaveNode nodeObjective) {		
+	public double manhattanDistanceObjective(CaveNode nodeObjective) {		
 		return Math.abs((this.coordenateX - nodeObjective.coordenateX)) + 
 				Math.abs((this.coordenateY - nodeObjective.coordenateY));
 	}
@@ -61,9 +70,14 @@ public class CaveNode {
 		}
 		return "[ID: " +this.numCave + "] " + myNeigbours;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public int compareTo(CaveNode o) {
+		if(this.fScore == o.fScore) 
+			return 0;
+		else if(this.fScore < o.fScore)
+			return -1;
+		else 
+			return 1;
+	}	
 }

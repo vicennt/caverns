@@ -1,6 +1,7 @@
 package caverns.logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,7 @@ public class ProgramFunctions {
 		double[][] euclideanMatrix = new double[numCaverns][numCaverns];	
 		for(int i = 0; i < numCaverns; i++) {
 			for(int j = 0; j < numCaverns; j++) {
-				if(incidenceMatrix[i][j] == 1) { // Edge between node i and node j
+				if(incidenceMatrix[j][i] == 1) { // Remember opposite index
 					int x1 = coordenateMatrix[i][0];
 					int x2 = coordenateMatrix[j][0];
 					int y1 = coordenateMatrix[i][1];
@@ -98,6 +99,7 @@ public class ProgramFunctions {
 		gScore.put(origenNode, 0.0); // gScore of first node is zero
 		fScore.put(origenNode, (double) origenNode.manhattanDistanceObjective(objectiveNode)); // g(n) = 0 so only the euristic value
 		while(!open.isEmpty()) {
+			Collections.sort(open);
 			CaveNode current = open.get(0); // get the node with the lowest fScore
 			if(current.equals(objectiveNode)) { // We found a goal
 				return reconstructPath(cameFrom, current);
@@ -108,18 +110,20 @@ public class ProgramFunctions {
 				if(closed.contains(neighbor)) {
 					continue;
 				}		
-				// Calculate function f(n) = g(n) + h(n) 
+				// Distance from start to a neighbor
 				double tentative_gScore = gScore.get(current) + 
-						current.manhattanDistanceObjective(neighbor);
+						current.euclideanDistance(neighbor);
 				if(!open.contains(neighbor)) {
 					open.add(neighbor);
 				}else if(tentative_gScore >= gScore.get(neighbor)) {
 					continue; // Not good path
-				}
+				}		
 				// Is better 
 				cameFrom.put(neighbor, current);
 				gScore.put(neighbor, tentative_gScore);
-				fScore.put(neighbor, gScore.get(neighbor) + neighbor.manhattanDistanceObjective(objectiveNode));
+				double fScoreValue = gScore.get(neighbor) + neighbor.manhattanDistanceObjective(objectiveNode);
+				fScore.put(neighbor, fScoreValue);
+				neighbor.setfScore(fScoreValue);
 			}
 		}		
 		return null;
