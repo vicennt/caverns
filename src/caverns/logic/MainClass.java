@@ -6,7 +6,7 @@ import caverns.data.DataWorker;
 
 public class MainClass {
 	public static void main(String[] args) {
-		String fileNamePath = "./data/100_caves.cav";
+		String fileNamePath = "./data/generated1000-2.cav";
 		DataWorker fw = new DataWorker();
 		ProgramFunctions pf;
 		ArrayList<CaveNode> caves;
@@ -28,7 +28,12 @@ public class MainClass {
 		System.out.println("Calling A* method.....");	
 		ArrayList<CaveNode> result =  pf.aStar(caves.get(0), caves.get(caves.size() - 1));
 		System.out.print("[RESULT] The best path is: ");
-		for(int i = result.size()- 1; i >= 0; i--) 
-			System.out.print(result.get(i).getNumCave() + "  ");		
+		if(result != null) {
+			for(int i = result.size()- 1; i >= 0; i--) 
+				System.out.print(result.get(i).getNumCave() + "  ");	
+		}else {
+			System.out.println("No path!");
+		}
+		
 	}
 }
