@@ -62,6 +62,7 @@ public class CaveNode implements Comparable<CaveNode>{
 				Math.pow((n.coordenateY - this.coordenateY),2));
 	}
 	
+	
 	@Override
 	public String toString() {
 		String myNeigbours = "";

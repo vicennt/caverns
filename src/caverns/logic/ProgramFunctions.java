@@ -113,6 +113,7 @@ public class ProgramFunctions {
 				// Distance from start to a neighbor
 				double tentative_gScore = gScore.get(current) + 
 						current.euclideanDistance(neighbor);
+				
 				if(!open.contains(neighbor)) {
 					open.add(neighbor);
 				}else if(tentative_gScore >= gScore.get(neighbor)) {
@@ -121,7 +122,7 @@ public class ProgramFunctions {
 				// Is better 
 				cameFrom.put(neighbor, current);
 				gScore.put(neighbor, tentative_gScore);
-				double fScoreValue = gScore.get(neighbor) + neighbor.manhattanDistanceObjective(objectiveNode);
+				double fScoreValue = gScore.get(neighbor) + 0;
 				fScore.put(neighbor, fScoreValue);
 				neighbor.setfScore(fScoreValue);
 			}
