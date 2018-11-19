@@ -54,16 +54,11 @@ public class ProgramFunctions {
 					int y1 = coordenateMatrix[i][1];
 					int y2 = coordenateMatrix[j][1];
 					double weighEdge = Math.sqrt(Math.pow((x2 - x1),2) + Math.pow((y2 - y1),2));
-					euclideanMatrix[i][j] = round(weighEdge, 2);
+					euclideanMatrix[i][j] = weighEdge;
 				}
 			}
 		}
 		return euclideanMatrix;	
-	}
-	
-	private static double round (double value, int precision) {
-	    int scale = (int) Math.pow(10, precision); 
-	    return (double) Math.round(value * scale) / scale;
 	}
 	
 	public ArrayList<CaveNode> getCaves() {
@@ -97,7 +92,8 @@ public class ProgramFunctions {
 		Map <CaveNode, Double> fScore = new HashMap<CaveNode, Double>(); // f(n) = g(n) + h(n)
 		open.add(origenNode); // Add origen node to open list  
 		gScore.put(origenNode, 0.0); // gScore of first node is zero
-		fScore.put(origenNode, (double) origenNode.manhattanDistanceObjective(objectiveNode)); // g(n) = 0 so only the euristic value
+		//fScore.put(origenNode, (double) origenNode.manhattanDistanceObjective(objectiveNode)); // g(n) = 0 so only the euristic value
+		fScore.put(origenNode, 0.0);
 		while(!open.isEmpty()) {
 			Collections.sort(open);
 			CaveNode current = open.get(0); // get the node with the lowest fScore

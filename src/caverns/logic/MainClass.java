@@ -6,7 +6,7 @@ import caverns.data.DataWorker;
 
 public class MainClass {
 	public static void main(String[] args) {
-		String fileNamePath = "./data/generated500-2.cav";
+		String fileNamePath = "./data/generated1000-1.cav";
 		DataWorker fw = new DataWorker();
 		ProgramFunctions pf;
 		ArrayList<CaveNode> caves;
@@ -50,9 +50,15 @@ public class MainClass {
 				if((i+1) < ids.length)
 					sum+= euclideanMatrix[ids[i]][ids[i+1]];
 			}
-			System.out.println("[RESULT] Length: " + sum);
+			System.out.println("[RESULT] Length: " + round(sum, 2));
 		}else {
 			System.out.println("No path!");
 		}
 	}
+	
+	private static double round (double value, int precision) {
+	    int scale = (int) Math.pow(10, precision); 
+	    return (double) Math.round(value * scale) / scale;
+	}
+	
 }
