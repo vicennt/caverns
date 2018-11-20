@@ -42,6 +42,7 @@ public class MainClass {
 		incidenceMatrix = pf.getIncidenceMatrix();
 		coordenateMatrix = pf.getCoordenateMatrix();	
 		euclideanMatrix = pf.getEuclideanMatrix(incidenceMatrix, coordenateMatrix);	
+		//Reading incidence matrix with the opposite index in order to get the neighbours
 		System.out.println("Creating the graph.....");
 		for (int j = 0; j < incidenceMatrix.length; j++) 
 			for (int k = 0; k < incidenceMatrix.length; k++) 
@@ -55,6 +56,7 @@ public class MainClass {
 		if(result != null) {
 			int count = 0;
 			ids = new int[result.size()];
+			// Getting all the caves indexs
 			for(int i = result.size()- 1; i >= 0; i--) {
 				path += result.get(i).getNumCave() + "  ";
 				ids[count] = result.get(i).getNumCave() - 1; // Saving the index 
